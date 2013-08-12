@@ -25,6 +25,7 @@
 		},
 		"patterns": [
 			{ "include": "#option" },
+			{ "include": "#comments" },
 			{
   				"match": "\\b(to|extensions)\\b",
 				"name": "keyword.source.proto"
@@ -51,6 +52,7 @@
 			{ "include": "$self" },
 			{ "include": "#enum" },
 			{ "include": "#option" },
+			{ "include": "#comments" },
 			{
   				"match": "\\b(optional|repeated|required|to|extensions)\\b",
 				"name": "keyword.source.proto"

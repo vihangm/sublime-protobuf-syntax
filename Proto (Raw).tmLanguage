@@ -105,6 +105,10 @@
 					<string>#option</string>
 				</dict>
 				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\b(to|extensions)\b</string>
 					<key>name</key>
@@ -156,6 +160,10 @@
 				<dict>
 					<key>include</key>
 					<string>#option</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
 				</dict>
 				<dict>
 					<key>match</key>
