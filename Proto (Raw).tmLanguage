@@ -136,7 +136,7 @@
 		<key>message</key>
 		<dict>
 			<key>begin</key>
-			<string>(message)(\s*)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)</string>
+			<string>(message|extend)(\s*)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
