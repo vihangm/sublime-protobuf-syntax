@@ -151,7 +151,7 @@
         <key>3</key>
         <dict>
           <key>name</key>
-          <string>entity.class.name.proto</string>
+          <string>entity.name.class.proto</string>
         </dict>
       </dict>
       <key>end</key>
@@ -281,11 +281,6 @@
             <dict>
               <key>name</key>
               <string>entity.name.class.proto</string>
-            </dict>
-            <key>3</key>
-            <dict>
-              <key>name</key>
-              <string>variable.other.proto</string>
             </dict>
             <key>7</key>
             <dict>

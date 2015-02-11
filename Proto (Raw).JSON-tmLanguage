@@ -47,7 +47,7 @@
           "name": "keyword.source.proto"
         },
         "3": {
-          "name": "entity.class.name.proto"
+          "name": "entity.name.class.proto"
         }
       },
       "end": "\\}",
@@ -122,7 +122,6 @@
           "match": "([A-Za-z][A-Za-z0-9_]*)(\\s*)([A-Za-z][A-Za-z0-9_]*)(\\s*)(=)(\\s*)([0-9]*)",
           "captures": {
             "1": { "name": "entity.name.class.proto" },
-            "3": { "name": "variable.other.proto" },
             "7": { "name": "constant.numeric.proto" }
           }
         }
