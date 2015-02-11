@@ -1,4 +1,5 @@
-{ "name": "Protocol Buffer",
+{
+  "name": "Protocol Buffer",
   "scopeName": "source.proto",
   "fileTypes": ["proto"],
   "repository": {
