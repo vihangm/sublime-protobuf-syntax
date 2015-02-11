@@ -54,7 +54,7 @@
 			{ "include": "#option" },
 			{ "include": "#comments" },
 			{
-  				"match": "\\b(optional|repeated|required|to|extensions)\\b",
+  				"match": "\\b(optional|repeated|required|oneof|to|extensions)\\b",
 				"name": "keyword.source.proto"
   			},
 			{
@@ -121,7 +121,7 @@
   	{
   		"include": "#strings"
   	},
-  	{	
+  	{
   		"match": "\\b(package|import)\\b",
 		"name": "keyword.source.proto"
   	},
