@@ -19,9 +19,8 @@
     "enum": {
       "begin": "(enum)(\\s*)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)",
       "beginCaptures": {
-        "1": {
-          "name": "keyword.source.proto"
-        }
+        "1": { "name": "keyword.source.proto" },
+        "3": { "name": "entity.class.name.proto" }
       },
       "patterns": [
         { "include": "#option" },
@@ -43,12 +42,8 @@
     "message": {
       "begin": "(message|extend)(\\s*)([A-Za-z][A-Za-z0-9_.]*)(\\s*)(\\{)",
       "beginCaptures": {
-        "1": {
-          "name": "keyword.source.proto"
-        },
-        "3": {
-          "name": "entity.name.class.proto"
-        }
+        "1": { "name": "keyword.source.proto" },
+        "3": { "name": "entity.name.class.proto" }
       },
       "end": "\\}",
       "patterns": [
@@ -56,6 +51,7 @@
         { "include": "#enum" },
         { "include": "#option" },
         { "include": "#comments" },
+        { "include": "#oneof" },
         {
           "match": "\\b(optional|repeated|required|to|extensions)\\b",
           "name": "keyword.source.proto"
@@ -127,6 +123,10 @@
         }
       ],
       "end": "\\}"
+    },
+    "storagetypes": {
+      "name": "storage.type.proto",
+      "match": "\\b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\\b"
     }
   },
   "patterns": [
@@ -141,6 +141,9 @@
     },
     {
       "include": "#oneof"
+    },
+    {
+      "include": "#storagetypes"
     },
     {
       "include": "#option"
@@ -158,10 +161,6 @@
     {
       "name": "constant.numeric.proto",
       "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b"
-    },
-    {
-      "name": "storage.type.proto",
-      "match": "\\b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\\b"
     }
   ],
   "uuid": "750ac1f3-b172-48de-b1a4-a3c310c4a293"
