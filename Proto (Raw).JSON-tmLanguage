@@ -112,6 +112,9 @@
   	{
   		"include": "#message"
   	},
+    {
+      "include": "#oneof"
+    },
   	{
   		"include": "#option"
   	},
@@ -122,7 +125,7 @@
   		"include": "#strings"
   	},
   	{
-  		"match": "\\b(package|import)\\b",
+  		"match": "\\b(package|import|oneof)\\b",
 		"name": "keyword.source.proto"
   	},
 	{

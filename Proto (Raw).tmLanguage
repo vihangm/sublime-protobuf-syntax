@@ -24,6 +24,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#oneof</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#option</string>
 		</dict>
 		<dict>
@@ -36,7 +40,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(package|import)\b</string>
+			<string>\b(package|import|oneof)\b</string>
 			<key>name</key>
 			<string>keyword.source.proto</string>
 		</dict>
@@ -167,7 +171,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(optional|repeated|required|oneof|to|extensions)\b</string>
+					<string>\b(optional|repeated|required|to|extensions)\b</string>
 					<key>name</key>
 					<string>keyword.source.proto</string>
 				</dict>
