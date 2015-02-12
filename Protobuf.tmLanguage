@@ -180,10 +180,31 @@
 					<string>#oneof</string>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>\b(optional|repeated|required|to|extensions)\b</string>
-					<key>name</key>
-					<string>keyword.source.proto</string>
+					<key>begin</key>
+					<string>(optional|repeated|required|to|extensions)(\s*)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.source.proto</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>;</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#storagetypes</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[A-Za-z][A-Za-z0-9_]*</string>
+							<key>name</key>
+							<string>entity.name.class.proto</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>begin</key>

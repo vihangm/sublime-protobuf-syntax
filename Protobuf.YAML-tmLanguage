@@ -68,8 +68,14 @@ repository:
     - include: '#option'
     - include: '#comments'
     - include: '#oneof'
-    - name: keyword.source.proto
-      match: \b(optional|repeated|required|to|extensions)\b
+    - begin: (optional|repeated|required|to|extensions)(\s*)
+      beginCaptures:
+        '1': {name: keyword.source.proto}
+      end: ;
+      patterns:
+      - include: '#storagetypes'
+      - name: entity.name.class.proto
+        match: '[A-Za-z][A-Za-z0-9_]*'
     - begin: \[
       end: \]
       patterns:

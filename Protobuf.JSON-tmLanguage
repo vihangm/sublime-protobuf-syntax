@@ -27,6 +27,7 @@
         "1": { "name": "keyword.source.proto" },
         "3": { "name": "entity.class.name.proto" }
       },
+      "end": "\\}",
       "patterns": [
         { "include": "#option" },
         { "include": "#comments" },
@@ -41,8 +42,7 @@
             "5": { "name": "constant.numeric.proto" }
           }
         }
-      ],
-      "end": "\\}"
+      ]
     },
     "message": {
       "begin": "(message|extend)(\\s*)([A-Za-z][A-Za-z0-9_.]*)(\\s*)(\\{)",
@@ -58,11 +58,22 @@
         { "include": "#comments" },
         { "include": "#oneof" },
         {
-          "match": "\\b(optional|repeated|required|to|extensions)\\b",
-          "name": "keyword.source.proto"
+          "begin": "(optional|repeated|required|to|extensions)(\\s*)",
+          "beginCaptures": {
+            "1": { "name": "keyword.source.proto" }
+          },
+          "end": ";",
+          "patterns": [
+            { "include": "#storagetypes" },
+            {
+              "match": "[A-Za-z][A-Za-z0-9_]*",
+              "name": "entity.name.class.proto"
+            }
+          ]
         },
         {
           "begin": "\\[",
+          "end": "\\]",
           "patterns": [
             {
               "match": "default|packed",
@@ -71,8 +82,7 @@
             {
               "include": "#constants"
             }
-          ],
-          "end": "\\]"
+          ]
         }
       ]
     },
@@ -83,6 +93,7 @@
           "name": "keyword.source.proto"
         }
       },
+      "end": ";",
       "patterns": [
         { "include": "#strings" },
         {
@@ -93,8 +104,7 @@
           "match": "(CODE\\_SIZE|SPEED)",
           "name": "constant.language.proto"
         }
-      ],
-      "end": ";"
+      ]
     },
     "constants": {
       "name": "constant.language.proto",
@@ -112,6 +122,7 @@
           "name": "keyword.source.proto"
         }
       },
+      "end": "\\}",
       "patterns": [
         { "include": "#option" },
         { "include": "#comments" },
@@ -126,8 +137,7 @@
             "7": { "name": "constant.numeric.proto" }
           }
         }
-      ],
-      "end": "\\}"
+      ]
     },
     "packaging": {
       "match": "(package|import)(\\s*)([\"]?[A-Za-z][A-Za-z0-9_.]*[\"]?)(;)",
