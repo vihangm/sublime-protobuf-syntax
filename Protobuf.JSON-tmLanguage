@@ -3,13 +3,6 @@
   "scopeName": "source.proto",
   "fileTypes": ["proto"],
   "repository": {
-    "package": {
-      "match": "(package|import)(\\s*)([\"]?[A-Za-z][A-Za-z0-9_.]*[\"]?)(;)",
-      "captures": {
-        "1": { "name": "keyword.source.proto" },
-        "2": { "name": "entity.name.tag" }
-      }
-    },
     "comments": {
       "patterns": [
         {
@@ -135,6 +128,13 @@
         }
       ],
       "end": "\\}"
+    },
+    "packaging": {
+      "match": "(package|import)(\\s*)([\"]?[A-Za-z][A-Za-z0-9_.]*[\"]?)(;)",
+      "captures": {
+        "1": { "name": "keyword.source.proto" },
+        "2": { "name": "entity.name.tag" }
+      }
     }
   },
   "patterns": [
@@ -163,7 +163,7 @@
       "include": "#oneof"
     },
     {
-      "include": "#package"
+      "include": "#packaging"
     },
     {
       "name": "constant.numeric.proto",

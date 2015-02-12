@@ -44,7 +44,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#package</string>
+			<string>#packaging</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -289,7 +289,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>package</key>
+		<key>packaging</key>
 		<dict>
 			<key>captures</key>
 			<dict>
