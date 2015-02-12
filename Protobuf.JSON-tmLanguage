@@ -3,6 +3,15 @@
   "scopeName": "source.proto",
   "fileTypes": ["proto"],
   "repository": {
+    "package": {
+      "patterns": {
+        "match": "(package|import)(\\s*)([A-Za-z][A-Za-z0-9_.]*)",
+        "captures": {
+          "1": { "name": "keyword.source.proto" },
+          "2": { "name": "entity.name.tag" }
+        }
+      }
+    },
     "comments": {
       "patterns": [
         {
@@ -16,6 +25,10 @@
           "name": "comment.line.double-slash.proto"
         }
       ]
+    },
+    "storagetypes": {
+      "name": "storage.type.proto",
+      "match": "\\b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\\b"
     },
     "enum": {
       "begin": "(enum)(\\s*)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)",
@@ -33,7 +46,7 @@
         {
           "match": "([A-Za-z][A-Za-z0-9_]*)(\\s*)(=)(\\s*)([0-9]*)",
           "captures": {
-            "1": { "name": "variable.other.proto" },
+            "1": { "name": "constant.other.proto" },
             "5": { "name": "constant.numeric.proto" }
           }
         }
@@ -124,10 +137,6 @@
         }
       ],
       "end": "\\}"
-    },
-    "storagetypes": {
-      "name": "storage.type.proto",
-      "match": "\\b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\\b"
     }
   },
   "patterns": [
@@ -135,16 +144,13 @@
       "include": "#comments"
     },
     {
+      "include": "#storagetypes"
+    },
+    {
       "include": "#enum"
     },
     {
       "include": "#message"
-    },
-    {
-      "include": "#oneof"
-    },
-    {
-      "include": "#storagetypes"
     },
     {
       "include": "#option"
@@ -156,8 +162,10 @@
       "include": "#strings"
     },
     {
-      "match": "\\b(package|import|oneof)\\b",
-      "name": "keyword.source.proto"
+      "include": "#oneof"
+    },
+    {
+      "include": "#package"
     },
     {
       "name": "constant.numeric.proto",
