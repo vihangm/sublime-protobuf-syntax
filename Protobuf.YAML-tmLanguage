@@ -41,7 +41,7 @@ repository:
     match: \b(true|false|max)\b
 
   enum:
-    begin: (enum)(\s*)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)
+    begin: (enum)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)
     beginCaptures:
       '1': {name: keyword.source.proto}
       '3': {name: entity.class.name.proto}
@@ -57,7 +57,7 @@ repository:
         '5': {name: constant.numeric.proto}
 
   message:
-    begin: (message|extend)(\s*)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)
+    begin: (message|extend)(\s+)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)
     beginCaptures:
       '1': {name: keyword.source.proto}
       '3': {name: entity.name.class.proto}
@@ -68,13 +68,13 @@ repository:
     - include: '#option'
     - include: '#comments'
     - include: '#oneof'
-    - begin: (optional|repeated|required|to|extensions)(\s*)
+    - begin: (optional|repeated|required|to|extensions)(\s+)
       beginCaptures:
         '1': {name: keyword.source.proto}
       end: ;
       patterns:
       - include: '#storagetypes'
-      - match: ([A-Za-z][A-Za-z0-9_]*)(\s*)([A-Za-z][A-Za-z0-9_]*)
+      - match: ([A-Za-z][A-Za-z0-9_]*)(\s+)([A-Za-z][A-Za-z0-9_]*)
         captures:
           '1': {name: entity.name.class.proto}
     - begin: \[
@@ -85,7 +85,7 @@ repository:
       - include: '#constants'
 
   oneof:
-    begin: (oneof)(\s*)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)
+    begin: (oneof)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)
     beginCaptures:
       '1': {name: keyword.source.proto}
     end: \}
@@ -94,7 +94,7 @@ repository:
     - include: '#comments'
     - name: keyword.source.proto
       match: \b(to|extensions)\b
-    - match: ([A-Za-z][A-Za-z0-9_]*)(\s*)([A-Za-z][A-Za-z0-9_]*)(\s*)(=)(\s*)([0-9]*)
+    - match: ([A-Za-z][A-Za-z0-9_]*)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(=)(\s*)([0-9]*)
       captures:
         '1': {name: entity.name.class.proto}
         '7': {name: constant.numeric.proto}
@@ -112,7 +112,7 @@ repository:
       match: (CODE\_SIZE|SPEED)
 
   packaging:
-    match: (package|import)(\s*)(["]?[A-Za-z][A-Za-z0-9_.]*["]?)(;)
+    match: (package|import)(\s+)(["]?[A-Za-z][A-Za-z0-9_.]*["]?)(;)
     captures:
       '1': {name: keyword.source.proto}
       '2': {name: entity.name.tag}

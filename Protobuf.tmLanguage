@@ -87,7 +87,7 @@
 		<key>enum</key>
 		<dict>
 			<key>begin</key>
-			<string>(enum)(\s*)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)</string>
+			<string>(enum)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -141,7 +141,7 @@
 		<key>message</key>
 		<dict>
 			<key>begin</key>
-			<string>(message|extend)(\s*)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)</string>
+			<string>(message|extend)(\s+)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -181,7 +181,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(optional|repeated|required|to|extensions)(\s*)</string>
+					<string>(optional|repeated|required|to|extensions)(\s+)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -208,7 +208,7 @@
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>([A-Za-z][A-Za-z0-9_]*)(\s*)([A-Za-z][A-Za-z0-9_]*)</string>
+							<string>([A-Za-z][A-Za-z0-9_]*)(\s+)([A-Za-z][A-Za-z0-9_]*)</string>
 						</dict>
 					</array>
 				</dict>
@@ -236,7 +236,7 @@
 		<key>oneof</key>
 		<dict>
 			<key>begin</key>
-			<string>(oneof)(\s*)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)</string>
+			<string>(oneof)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -278,7 +278,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>([A-Za-z][A-Za-z0-9_]*)(\s*)([A-Za-z][A-Za-z0-9_]*)(\s*)(=)(\s*)([0-9]*)</string>
+					<string>([A-Za-z][A-Za-z0-9_]*)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(=)(\s*)([0-9]*)</string>
 				</dict>
 			</array>
 		</dict>
@@ -332,7 +332,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(package|import)(\s*)(["]?[A-Za-z][A-Za-z0-9_.]*["]?)(;)</string>
+			<string>(package|import)(\s+)(["]?[A-Za-z][A-Za-z0-9_.]*["]?)(;)</string>
 		</dict>
 		<key>storagetypes</key>
 		<dict>
