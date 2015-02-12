@@ -66,9 +66,10 @@
           "patterns": [
             { "include": "#storagetypes" },
             {
-              "match": "([A-Za-z][A-Za-z0-9_]*)(\\s+)([A-Za-z][A-Za-z0-9_]*)",
+              "match": "([A-Za-z][A-Za-z0-9_]*)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(=)(\\s*)([0-9]*)",
               "captures": {
-                "1": { "name": "entity.name.class.proto" }
+                "1": { "name": "entity.name.class.proto" },
+                "7": { "name": "constant.numeric.proto" }
               }
             }
           ]

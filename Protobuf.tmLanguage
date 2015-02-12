@@ -206,9 +206,14 @@
 									<key>name</key>
 									<string>entity.name.class.proto</string>
 								</dict>
+								<key>7</key>
+								<dict>
+									<key>name</key>
+									<string>constant.numeric.proto</string>
+								</dict>
 							</dict>
 							<key>match</key>
-							<string>([A-Za-z][A-Za-z0-9_]*)(\s+)([A-Za-z][A-Za-z0-9_]*)</string>
+							<string>([A-Za-z][A-Za-z0-9_]*)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(=)(\s*)([0-9]*)</string>
 						</dict>
 					</array>
 				</dict>
