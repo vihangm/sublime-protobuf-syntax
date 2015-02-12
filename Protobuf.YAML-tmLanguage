@@ -74,8 +74,9 @@ repository:
       end: ;
       patterns:
       - include: '#storagetypes'
-      - name: entity.name.class.proto
-        match: '[A-Za-z][A-Za-z0-9_]*'
+      - match: ([A-Za-z][A-Za-z0-9_]*)(\s*)([A-Za-z][A-Za-z0-9_]*)
+        captures:
+          '1': {name: entity.name.class.proto}
     - begin: \[
       end: \]
       patterns:

@@ -199,10 +199,16 @@
 							<string>#storagetypes</string>
 						</dict>
 						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.class.proto</string>
+								</dict>
+							</dict>
 							<key>match</key>
-							<string>[A-Za-z][A-Za-z0-9_]*</string>
-							<key>name</key>
-							<string>entity.name.class.proto</string>
+							<string>([A-Za-z][A-Za-z0-9_]*)(\s*)([A-Za-z][A-Za-z0-9_]*)</string>
 						</dict>
 					</array>
 				</dict>
