@@ -231,7 +231,7 @@
 							<array>
 								<dict>
 									<key>match</key>
-									<string>default|packed|deprecated</string>
+									<string>default|packed|deprecated|lazy</string>
 									<key>name</key>
 									<string>keyword.source.proto</string>
 								</dict>

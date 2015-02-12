@@ -82,7 +82,7 @@
               "end": "\\]",
               "patterns": [
                 {
-                  "match": "default|packed|deprecated",
+                  "match": "default|packed|deprecated|lazy",
                   "name": "keyword.source.proto"
                 },
                 {

@@ -84,7 +84,7 @@ repository:
         end: \]
         patterns:
         - name: keyword.source.proto
-          match: default|packed|deprecated
+          match: default|packed|deprecated|lazy
         - include: '#constants'
 
   oneof:
