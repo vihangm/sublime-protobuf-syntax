@@ -291,24 +291,21 @@
 		</dict>
 		<key>package</key>
 		<dict>
-			<key>patterns</key>
+			<key>captures</key>
 			<dict>
-				<key>captures</key>
+				<key>1</key>
 				<dict>
-					<key>1</key>
-					<dict>
-						<key>name</key>
-						<string>keyword.source.proto</string>
-					</dict>
-					<key>2</key>
-					<dict>
-						<key>name</key>
-						<string>entity.name.tag</string>
-					</dict>
+					<key>name</key>
+					<string>keyword.source.proto</string>
 				</dict>
-				<key>match</key>
-				<string>(package|import)(\s*)([A-Za-z][A-Za-z0-9_.]*)</string>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag</string>
+				</dict>
 			</dict>
+			<key>match</key>
+			<string>(package|import)(\s*)(["]?[A-Za-z][A-Za-z0-9_.]*["]?)(;)</string>
 		</dict>
 		<key>storagetypes</key>
 		<dict>

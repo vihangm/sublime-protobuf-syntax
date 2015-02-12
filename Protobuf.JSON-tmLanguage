@@ -4,12 +4,10 @@
   "fileTypes": ["proto"],
   "repository": {
     "package": {
-      "patterns": {
-        "match": "(package|import)(\\s*)([A-Za-z][A-Za-z0-9_.]*)",
-        "captures": {
-          "1": { "name": "keyword.source.proto" },
-          "2": { "name": "entity.name.tag" }
-        }
+      "match": "(package|import)(\\s*)([\"]?[A-Za-z][A-Za-z0-9_.]*[\"]?)(;)",
+      "captures": {
+        "1": { "name": "keyword.source.proto" },
+        "2": { "name": "entity.name.tag" }
       }
     },
     "comments": {
