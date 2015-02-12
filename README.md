@@ -5,6 +5,5 @@ Sublime Syntax Highlighting for Protocol Buffers
 
 Contributors
 ------------
-
-[awalterschulze](https://github.com/awalterschulze)
-[vihangm](https://github.com/vihangm)
+* [awalterschulze](https://github.com/awalterschulze)
+* [vihangm](https://github.com/vihangm)
