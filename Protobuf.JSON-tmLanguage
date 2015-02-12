@@ -76,19 +76,19 @@
               "captures": {
                 "4": { "name": "constant.numeric.proto" }
               }
-            }
-          ]
-        },
-        {
-          "begin": "\\[",
-          "end": "\\]",
-          "patterns": [
-            {
-              "match": "default|packed",
-              "name": "keyword.source.proto"
             },
             {
-              "include": "#constants"
+              "begin": "\\[",
+              "end": "\\]",
+              "patterns": [
+                {
+                  "match": "default|packed|deprecated",
+                  "name": "keyword.source.proto"
+                },
+                {
+                  "include": "#constants"
+                }
+              ]
             }
           ]
         }

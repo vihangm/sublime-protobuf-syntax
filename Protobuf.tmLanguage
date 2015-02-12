@@ -222,24 +222,24 @@
 							<key>match</key>
 							<string>(\s*)(=)(\s*)([0-9]*)</string>
 						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>\[</string>
-					<key>end</key>
-					<string>\]</string>
-					<key>patterns</key>
-					<array>
 						<dict>
-							<key>match</key>
-							<string>default|packed</string>
-							<key>name</key>
-							<string>keyword.source.proto</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#constants</string>
+							<key>begin</key>
+							<string>\[</string>
+							<key>end</key>
+							<string>\]</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>default|packed|deprecated</string>
+									<key>name</key>
+									<string>keyword.source.proto</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#constants</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>

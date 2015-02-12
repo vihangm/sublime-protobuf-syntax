@@ -80,12 +80,12 @@ repository:
       - match: (\s*)(=)(\s*)([0-9]*)
         captures:
           '4': {name: constant.numeric.proto}
-    - begin: \[
-      end: \]
-      patterns:
-      - name: keyword.source.proto
-        match: default|packed
-      - include: '#constants'
+      - begin: \[
+        end: \]
+        patterns:
+        - name: keyword.source.proto
+          match: default|packed|deprecated
+        - include: '#constants'
 
   oneof:
     begin: (oneof)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)
