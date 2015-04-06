@@ -22,7 +22,7 @@
       "match": "\\b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\\b"
     },
     "enum": {
-      "begin": "(enum)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)",
+      "begin": "(enum)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)?",
       "beginCaptures": {
         "1": { "name": "keyword.source.proto" },
         "3": { "name": "entity.name.class.proto" }
@@ -45,7 +45,7 @@
       ]
     },
     "message": {
-      "begin": "(message|extend)(\\s+)([A-Za-z][A-Za-z0-9_.]*)(\\s*)(\\{)",
+      "begin": "(message|extend)(\\s+)([A-Za-z][A-Za-z0-9_.]*)(\\s*)(\\{)?",
       "beginCaptures": {
         "1": { "name": "keyword.source.proto" },
         "3": { "name": "entity.name.class.proto" }
@@ -124,7 +124,7 @@
       "name": "string.quoted.double.proto"
     },
     "oneof": {
-      "begin": "(oneof)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)",
+      "begin": "(oneof)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)?",
       "beginCaptures": {
         "1": {
           "name": "keyword.source.proto"

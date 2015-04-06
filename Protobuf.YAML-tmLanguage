@@ -41,7 +41,7 @@ repository:
     match: \b(true|false|max)\b
 
   enum:
-    begin: (enum)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)
+    begin: (enum)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)?
     beginCaptures:
       '1': {name: keyword.source.proto}
       '3': {name: entity.name.class.proto}
@@ -57,7 +57,7 @@ repository:
         '5': {name: constant.numeric.proto}
 
   message:
-    begin: (message|extend)(\s+)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)
+    begin: (message|extend)(\s+)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)?
     beginCaptures:
       '1': {name: keyword.source.proto}
       '3': {name: entity.name.class.proto}
@@ -88,7 +88,7 @@ repository:
         - include: '#constants'
 
   oneof:
-    begin: (oneof)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)
+    begin: (oneof)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)?
     beginCaptures:
       '1': {name: keyword.source.proto}
     end: \}
