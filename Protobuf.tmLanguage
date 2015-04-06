@@ -87,7 +87,7 @@
 		<key>enum</key>
 		<dict>
 			<key>begin</key>
-			<string>(enum)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)</string>
+			<string>(enum)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -141,7 +141,7 @@
 		<key>message</key>
 		<dict>
 			<key>begin</key>
-			<string>(message|extend)(\s+)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)</string>
+			<string>(message|extend)(\s+)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -248,7 +248,7 @@
 		<key>oneof</key>
 		<dict>
 			<key>begin</key>
-			<string>(oneof)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)</string>
+			<string>(oneof)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
