@@ -1,0 +1,10 @@
+# [PackageDev] target_format: plist, ext: tmPreferences
+
+name: Symbol List
+scope: "entity.name.class.proto"
+uuid: c2234a3a-2e4e-4c92-af3e-5640847d91c6
+
+
+settings:
+  showInSymbolList: "1"
+  showInIndexedSymbolList: "1"
