@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List</string>
 	<key>scope</key>
-	<string>entity.name.class.proto</string>
+	<string>entity.name.class.message.proto</string>
 	<key>settings</key>
 	<dict>
 		<key>showInIndexedSymbolList</key>
