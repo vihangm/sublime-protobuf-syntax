@@ -1,0 +1,11 @@
+# [PackageDev] target_format: plist, ext: tmPreferences
+
+name: Comments
+scope: "entity.name.class.message.proto"
+uuid: c97ffa5b-1ab0-4d8f-809d-235f6d09b34f
+
+
+settings:
+  shellVariables:
+  - name: "TM_COMMENT_START"
+    value: "//"
