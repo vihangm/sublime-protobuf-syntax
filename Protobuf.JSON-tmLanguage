@@ -105,7 +105,7 @@
       "patterns": [
         { "include": "#strings" },
         {
-          "match": "default|packed|optimize\\_for|java\\_package|java\\_outer\\_classname|go\\_package|deprecated|lazy|\w+\_api\_version",
+          "match": "default|packed|optimize\\_for|java\\_package|java\\_outer\\_classname|go\\_package|deprecated|lazy|\\w+\\_api\\_version",
           "name": "storage.type.proto"
         },
         {
@@ -148,7 +148,7 @@
       ]
     },
     "packaging": {
-      "match": "(package|import)(?=(\s+)(["]?[A-Za-z][A-Za-z0-9_./]*["]?)(;))",
+      "match": "(package|import)(?=(\\s+)([\"]?[A-Za-z][A-Za-z0-9_./]*[\"]?)(;))",
       "captures": {
         "1": { "name": "keyword.source.proto" },
         "2": { "name": "entity.name.tag" }
