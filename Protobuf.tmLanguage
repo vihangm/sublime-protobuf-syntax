@@ -316,7 +316,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>default|packed|optimize\_for|java\_package|java\_outer\_classname|go\_package|deprecated|lazy</string>
+					<string>default|packed|optimize\_for|java\_package|java\_outer\_classname|go\_package|deprecated|lazy|\w+\_api\_version</string>
 					<key>name</key>
 					<string>storage.type.proto</string>
 				</dict>
@@ -345,7 +345,7 @@
 			</dict>
 			<key>match</key>
 			<string>(package|import)(?=(\s+)(["]?[A-Za-z][A-Za-z0-9_./]*["]?)(;))</string>
-    </dict>
+		</dict>
 		<key>storagetypes</key>
 		<dict>
 			<key>match</key>
