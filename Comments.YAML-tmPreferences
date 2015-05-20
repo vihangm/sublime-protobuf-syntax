@@ -9,3 +9,9 @@ settings:
   shellVariables:
   - name: "TM_COMMENT_START"
     value: "//"
+  - name: "TM_COMMENT_START_2"
+    value: "/*"
+  - name: "TM_COMMENT_END_2"
+    value: "*/"
+  - name: "TM_COMMENT_DISABLE_INDENT_2"
+    value: true
