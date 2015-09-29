@@ -1,0 +1,40 @@
+{
+    "cmd": [
+        "protoc",
+        "-I=$file_path",
+        "--cpp_out=$file_path",
+        "--java_out=$file_path",
+        "--python_out=$file_path",
+        "$file"
+    ],
+    "selector": "source.proto",
+    "variants": [
+        {
+            "name": "C++",
+            "cmd": [
+                "protoc",
+                "-I=$file_path",
+                "--cpp_out=$file_path",
+                "$file"
+            ]
+        },
+        {
+            "name": "Java",
+            "cmd": [
+                "protoc",
+                "-I=$file_path",
+                "--java_out=$file_path",
+                "$file"
+            ]
+        },
+        {
+            "name": "Python",
+            "cmd": [
+                "protoc",
+                "-I=$file_path",
+                "--python_out=$file_path",
+                "$file"
+            ]
+        }
+    ]
+}
