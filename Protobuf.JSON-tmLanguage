@@ -1,192 +1,274 @@
 {
-  "name": "Protocol Buffer",
-  "scopeName": "source.proto",
-  "fileTypes": ["proto"],
-  "repository": {
-    "comments": {
-      "patterns": [
+    "patterns": [
         {
-          "begin": "/\\*",
-          "end": "\\*/",
-          "name": "comment.block.proto"
-        },
+            "include": "#comments"
+        }, 
         {
-          "begin": "//",
-          "end": "$\\n?",
-          "name": "comment.line.double-slash.proto"
+            "include": "#storagetypes"
+        }, 
+        {
+            "include": "#enum"
+        }, 
+        {
+            "include": "#message"
+        }, 
+        {
+            "include": "#option"
+        }, 
+        {
+            "include": "#constants"
+        }, 
+        {
+            "include": "#strings"
+        }, 
+        {
+            "include": "#oneof"
+        }, 
+        {
+            "include": "#packaging"
+        }, 
+        {
+            "include": "#service"
+        }, 
+        {
+            "name": "constant.numeric.proto", 
+            "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b"
         }
-      ]
-    },
-    "storagetypes": {
-      "name": "storage.type.proto",
-      "match": "\\b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\\b"
-    },
-    "enum": {
-      "begin": "(enum)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)?",
-      "beginCaptures": {
-        "1": { "name": "keyword.source.proto" },
-        "3": { "name": "entity.name.class.proto" }
-      },
-      "end": "\\}",
-      "patterns": [
-        { "include": "#option" },
-        { "include": "#comments" },
-        {
-          "match": "\\b(to|extensions)\\b",
-          "name": "keyword.source.proto"
-        },
-        {
-          "match": "([A-Za-z][A-Za-z0-9_]*)(\\s*)(=)(\\s*)([0-9]*)",
-          "captures": {
-            "1": { "name": "constant.other.proto" },
-            "5": { "name": "constant.numeric.proto" }
-          }
-        }
-      ]
-    },
-    "message": {
-      "begin": "(message|extend)(\\s+)([A-Za-z][A-Za-z0-9_.]*)(\\s*)(\\{)?",
-      "beginCaptures": {
-        "1": { "name": "keyword.source.proto" },
-        "3": { "name": "entity.name.class.proto" }
-      },
-      "end": "\\}",
-      "patterns": [
-        { "include": "$self" },
-        { "include": "#enum" },
-        { "include": "#option" },
-        { "include": "#comments" },
-        { "include": "#oneof" },
-        {
-          "begin": "(optional|repeated|required|to|extensions)(\\s+)",
-          "beginCaptures": {
-            "1": { "name": "keyword.source.proto" }
-          },
-          "end": ";",
-          "patterns": [
-            { "include": "#storagetypes" },
-            {
-              "match": "([A-Za-z][A-Za-z0-9_]*)(\\s+)([A-Za-z][A-Za-z0-9_]*)",
-              "captures": {
-                "1": { "name": "entity.name.class.proto" }
-              }
-            },
-            {
-              "match": "(\\s*)(=)(\\s*)([0-9]*)",
-              "captures": {
-                "4": { "name": "constant.numeric.proto" }
-              }
-            },
-            {
-              "begin": "\\[",
-              "end": "\\]",
-              "patterns": [
+    ], 
+    "scopeName": "source.proto", 
+    "repository": {
+        "option": {
+            "patterns": [
                 {
-                  "match": "default|packed|deprecated|lazy",
-                  "name": "keyword.source.proto"
-                },
+                    "include": "#strings"
+                }, 
                 {
-                  "include": "#constants"
+                    "name": "storage.type.proto", 
+                    "match": "default|packed|optimize\\_for|java\\_package|java\\_outer\\_classname|go\\_package|deprecated|lazy|\\w+\\_api\\_version"
+                }, 
+                {
+                    "name": "constant.language.proto", 
+                    "match": "(CODE\\_SIZE|SPEED)"
                 }
-              ]
-            }
-          ]
+            ], 
+            "beginCaptures": {
+                "2": {
+                    "name": "keyword.source.proto"
+                }
+            }, 
+            "begin": "(\\b)(option)(\\b)", 
+            "end": ";"
+        }, 
+        "constants": {
+            "name": "constant.language.proto", 
+            "match": "\\b(true|false|max)\\b"
+        }, 
+        "enum": {
+            "patterns": [
+                {
+                    "include": "#option"
+                }, 
+                {
+                    "include": "#comments"
+                }, 
+                {
+                    "name": "keyword.source.proto", 
+                    "match": "\\b(to|extensions)\\b"
+                }, 
+                {
+                    "captures": {
+                        "1": {
+                            "name": "constant.other.proto"
+                        }, 
+                        "5": {
+                            "name": "constant.numeric.proto"
+                        }
+                    }, 
+                    "match": "([A-Za-z][A-Za-z0-9_]*)(\\s*)(=)(\\s*)([0-9]*)"
+                }
+            ], 
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }, 
+                "3": {
+                    "name": "entity.name.class.proto"
+                }
+            }, 
+            "begin": "(enum)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)?", 
+            "end": "\\}"
+        }, 
+        "service": {
+            "patterns": [
+                {
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.source.proto"
+                        }, 
+                        "3": {
+                            "name": "entity.name.function"
+                        }, 
+                        "7": {
+                            "name": "keyword.source.proto"
+                        }
+                    }, 
+                    "begin": "(rpc)(\\s+)([A-Za-z][A-Z-a-z0-9_]+)(\\s*)(\\([A-Za-z0-9_]+\\))(\\s+)(returns)(\\s+)(\\([A-Za-z0-9_]+\\))", 
+                    "end": ";"
+                }
+            ], 
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }, 
+                "3": {
+                    "name": "entity.name.class.message.proto"
+                }
+            }, 
+            "begin": "(service)(\\s+)([A-Za-z][A-Za-z0-9_.]*)(\\s*)(\\{)?", 
+            "end": "\\}"
+        }, 
+        "strings": {
+            "begin": "\"", 
+            "name": "string.quoted.double.proto", 
+            "end": "\""
+        }, 
+        "comments": {
+            "patterns": [
+                {
+                    "begin": "/\\*", 
+                    "name": "comment.block.proto", 
+                    "end": "\\*/"
+                }, 
+                {
+                    "begin": "//", 
+                    "name": "comment.line.double-slash.proto", 
+                    "end": "$\\n?"
+                }
+            ]
+        }, 
+        "oneof": {
+            "patterns": [
+                {
+                    "include": "#option"
+                }, 
+                {
+                    "include": "#comments"
+                }, 
+                {
+                    "name": "keyword.source.proto", 
+                    "match": "\\b(to|extensions)\\b"
+                }, 
+                {
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.class.proto"
+                        }, 
+                        "7": {
+                            "name": "constant.numeric.proto"
+                        }
+                    }, 
+                    "match": "([A-Za-z][A-Za-z0-9_]*)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(=)(\\s*)([0-9]*)"
+                }
+            ], 
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }
+            }, 
+            "begin": "(oneof)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)?", 
+            "end": "\\}"
+        }, 
+        "storagetypes": {
+            "name": "storage.type.proto", 
+            "match": "\\b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\\b"
+        }, 
+        "packaging": {
+            "captures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }, 
+                "2": {
+                    "name": "entity.name.tag"
+                }
+            }, 
+            "match": "(package|import)(?=(\\s+)([\"]?[A-Za-z][A-Za-z0-9_./]*[\"]?)(;))"
+        }, 
+        "message": {
+            "patterns": [
+                {
+                    "include": "$self"
+                }, 
+                {
+                    "include": "#enum"
+                }, 
+                {
+                    "include": "#option"
+                }, 
+                {
+                    "include": "#comments"
+                }, 
+                {
+                    "include": "#oneof"
+                }, 
+                {
+                    "patterns": [
+                        {
+                            "include": "#storagetypes"
+                        }, 
+                        {
+                            "captures": {
+                                "1": {
+                                    "name": "entity.name.class.proto"
+                                }
+                            }, 
+                            "match": "([A-Za-z][A-Za-z0-9_]*)(\\s+)([A-Za-z][A-Za-z0-9_]*)"
+                        }, 
+                        {
+                            "captures": {
+                                "4": {
+                                    "name": "constant.numeric.proto"
+                                }
+                            }, 
+                            "match": "(\\s*)(=)(\\s*)([0-9]*)"
+                        }, 
+                        {
+                            "patterns": [
+                                {
+                                    "name": "keyword.source.proto", 
+                                    "match": "default|packed|deprecated|lazy"
+                                }, 
+                                {
+                                    "include": "#constants"
+                                }
+                            ], 
+                            "begin": "\\[", 
+                            "end": "\\]"
+                        }
+                    ], 
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.source.proto"
+                        }
+                    }, 
+                    "begin": "(optional|repeated|required|to|extensions)(\\s+)", 
+                    "end": ";"
+                }
+            ], 
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }, 
+                "3": {
+                    "name": "entity.name.class.message.proto"
+                }
+            }, 
+            "begin": "(message|extend)(\\s+)([A-Za-z][A-Za-z0-9_.]*)(\\s*)(\\{)?", 
+            "end": "\\}"
         }
-      ]
-    },
-    "option": {
-      "begin": "(\\b)(option)(\\b)",
-      "beginCaptures": {
-        "2": {
-          "name": "keyword.source.proto"
-        }
-      },
-      "end": ";",
-      "patterns": [
-        { "include": "#strings" },
-        {
-          "match": "default|packed|optimize\\_for|java\\_package|java\\_outer\\_classname|go\\_package|deprecated|lazy|\\w+\\_api\\_version",
-          "name": "storage.type.proto"
-        },
-        {
-          "match": "(CODE\\_SIZE|SPEED)",
-          "name": "constant.language.proto"
-        }
-      ]
-    },
-    "constants": {
-      "name": "constant.language.proto",
-      "match": "\\b(true|false|max)\\b"
-    },
-    "strings": {
-      "begin": "\"",
-      "end": "\"",
-      "name": "string.quoted.double.proto"
-    },
-    "oneof": {
-      "begin": "(oneof)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)?",
-      "beginCaptures": {
-        "1": {
-          "name": "keyword.source.proto"
-        }
-      },
-      "end": "\\}",
-      "patterns": [
-        { "include": "#option" },
-        { "include": "#comments" },
-        {
-          "match": "\\b(to|extensions)\\b",
-          "name": "keyword.source.proto"
-        },
-        {
-          "match": "([A-Za-z][A-Za-z0-9_]*)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(=)(\\s*)([0-9]*)",
-          "captures": {
-            "1": { "name": "entity.name.class.proto" },
-            "7": { "name": "constant.numeric.proto" }
-          }
-        }
-      ]
-    },
-    "packaging": {
-      "match": "(package|import)(?=(\\s+)([\"]?[A-Za-z][A-Za-z0-9_./]*[\"]?)(;))",
-      "captures": {
-        "1": { "name": "keyword.source.proto" },
-        "2": { "name": "entity.name.tag" }
-      }
-    }
-  },
-  "patterns": [
-    {
-      "include": "#comments"
-    },
-    {
-      "include": "#storagetypes"
-    },
-    {
-      "include": "#enum"
-    },
-    {
-      "include": "#message"
-    },
-    {
-      "include": "#option"
-    },
-    {
-      "include": "#constants"
-    },
-    {
-      "include": "#strings"
-    },
-    {
-      "include": "#oneof"
-    },
-    {
-      "include": "#packaging"
-    },
-    {
-      "name": "constant.numeric.proto",
-      "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b"
-    }
-  ],
-  "uuid": "750ac1f3-b172-48de-b1a4-a3c310c4a293"
+    }, 
+    "uuid": "750ac1f3-b172-48de-b1a4-a3c310c4a293", 
+    "name": "Protocol Buffer", 
+    "fileTypes": [
+        "proto"
+    ]
 }
