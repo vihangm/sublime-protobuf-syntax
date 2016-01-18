@@ -1,371 +1,274 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>fileTypes</key>
-	<array>
-		<string>proto</string>
-	</array>
-	<key>name</key>
-	<string>Protocol Buffer</string>
-	<key>patterns</key>
-	<array>
-		<dict>
-			<key>include</key>
-			<string>#comments</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#storagetypes</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#enum</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#message</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#option</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#constants</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#strings</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#oneof</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#packaging</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)\b</string>
-			<key>name</key>
-			<string>constant.numeric.proto</string>
-		</dict>
-	</array>
-	<key>repository</key>
-	<dict>
-		<key>comments</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>/\*</string>
-					<key>end</key>
-					<string>\*/</string>
-					<key>name</key>
-					<string>comment.block.proto</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>//</string>
-					<key>end</key>
-					<string>$\n?</string>
-					<key>name</key>
-					<string>comment.line.double-slash.proto</string>
-				</dict>
-			</array>
-		</dict>
-		<key>constants</key>
-		<dict>
-			<key>match</key>
-			<string>\b(true|false|max)\b</string>
-			<key>name</key>
-			<string>constant.language.proto</string>
-		</dict>
-		<key>enum</key>
-		<dict>
-			<key>begin</key>
-			<string>(enum)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)?</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.source.proto</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.class.proto</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\}</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#option</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#comments</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(to|extensions)\b</string>
-					<key>name</key>
-					<string>keyword.source.proto</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>constant.other.proto</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>constant.numeric.proto</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>([A-Za-z][A-Za-z0-9_]*)(\s*)(=)(\s*)([0-9]*)</string>
-				</dict>
-			</array>
-		</dict>
-		<key>message</key>
-		<dict>
-			<key>begin</key>
-			<string>(message|extend)(\s+)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)?</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.source.proto</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.class.message.proto</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\}</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>$self</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#enum</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#option</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#comments</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#oneof</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(optional|repeated|required|to|extensions)(\s+)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.source.proto</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>;</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#storagetypes</string>
-						</dict>
-						<dict>
-							<key>captures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>entity.name.class.proto</string>
-								</dict>
-							</dict>
-							<key>match</key>
-							<string>([A-Za-z][A-Za-z0-9_]*)(\s+)([A-Za-z][A-Za-z0-9_]*)</string>
-						</dict>
-						<dict>
-							<key>captures</key>
-							<dict>
-								<key>4</key>
-								<dict>
-									<key>name</key>
-									<string>constant.numeric.proto</string>
-								</dict>
-							</dict>
-							<key>match</key>
-							<string>(\s*)(=)(\s*)([0-9]*)</string>
-						</dict>
-						<dict>
-							<key>begin</key>
-							<string>\[</string>
-							<key>end</key>
-							<string>\]</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>match</key>
-									<string>default|packed|deprecated|lazy</string>
-									<key>name</key>
-									<string>keyword.source.proto</string>
-								</dict>
-								<dict>
-									<key>include</key>
-									<string>#constants</string>
-								</dict>
-							</array>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<key>oneof</key>
-		<dict>
-			<key>begin</key>
-			<string>(oneof)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)?</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.source.proto</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\}</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#option</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#comments</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(to|extensions)\b</string>
-					<key>name</key>
-					<string>keyword.source.proto</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.class.proto</string>
-						</dict>
-						<key>7</key>
-						<dict>
-							<key>name</key>
-							<string>constant.numeric.proto</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>([A-Za-z][A-Za-z0-9_]*)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(=)(\s*)([0-9]*)</string>
-				</dict>
-			</array>
-		</dict>
-		<key>option</key>
-		<dict>
-			<key>begin</key>
-			<string>(\b)(option)(\b)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.source.proto</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>;</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#strings</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>default|packed|optimize\_for|java\_package|java\_outer\_classname|go\_package|deprecated|lazy|\w+\_api\_version</string>
-					<key>name</key>
-					<string>storage.type.proto</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(CODE\_SIZE|SPEED)</string>
-					<key>name</key>
-					<string>constant.language.proto</string>
-				</dict>
-			</array>
-		</dict>
-		<key>packaging</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.source.proto</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(package|import)(?=(\s+)(["]?[A-Za-z][A-Za-z0-9_./]*["]?)(;))</string>
-		</dict>
-		<key>storagetypes</key>
-		<dict>
-			<key>match</key>
-			<string>\b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\b</string>
-			<key>name</key>
-			<string>storage.type.proto</string>
-		</dict>
-		<key>strings</key>
-		<dict>
-			<key>begin</key>
-			<string>"</string>
-			<key>end</key>
-			<string>"</string>
-			<key>name</key>
-			<string>string.quoted.double.proto</string>
-		</dict>
-	</dict>
-	<key>scopeName</key>
-	<string>source.proto</string>
-	<key>uuid</key>
-	<string>750ac1f3-b172-48de-b1a4-a3c310c4a293</string>
-</dict>
-</plist>
+{
+    "patterns": [
+        {
+            "include": "#comments"
+        }, 
+        {
+            "include": "#storagetypes"
+        }, 
+        {
+            "include": "#enum"
+        }, 
+        {
+            "include": "#message"
+        }, 
+        {
+            "include": "#option"
+        }, 
+        {
+            "include": "#constants"
+        }, 
+        {
+            "include": "#strings"
+        }, 
+        {
+            "include": "#oneof"
+        }, 
+        {
+            "include": "#packaging"
+        }, 
+        {
+            "include": "#service"
+        }, 
+        {
+            "name": "constant.numeric.proto", 
+            "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b"
+        }
+    ], 
+    "scopeName": "source.proto", 
+    "repository": {
+        "option": {
+            "patterns": [
+                {
+                    "include": "#strings"
+                }, 
+                {
+                    "name": "storage.type.proto", 
+                    "match": "default|packed|optimize\\_for|java\\_package|java\\_outer\\_classname|go\\_package|deprecated|lazy|\\w+\\_api\\_version"
+                }, 
+                {
+                    "name": "constant.language.proto", 
+                    "match": "(CODE\\_SIZE|SPEED)"
+                }
+            ], 
+            "beginCaptures": {
+                "2": {
+                    "name": "keyword.source.proto"
+                }
+            }, 
+            "begin": "(\\b)(option)(\\b)", 
+            "end": ";"
+        }, 
+        "constants": {
+            "name": "constant.language.proto", 
+            "match": "\\b(true|false|max)\\b"
+        }, 
+        "enum": {
+            "patterns": [
+                {
+                    "include": "#option"
+                }, 
+                {
+                    "include": "#comments"
+                }, 
+                {
+                    "name": "keyword.source.proto", 
+                    "match": "\\b(to|extensions)\\b"
+                }, 
+                {
+                    "captures": {
+                        "1": {
+                            "name": "constant.other.proto"
+                        }, 
+                        "5": {
+                            "name": "constant.numeric.proto"
+                        }
+                    }, 
+                    "match": "([A-Za-z][A-Za-z0-9_]*)(\\s*)(=)(\\s*)([0-9]*)"
+                }
+            ], 
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }, 
+                "3": {
+                    "name": "entity.name.class.proto"
+                }
+            }, 
+            "begin": "(enum)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)?", 
+            "end": "\\}"
+        }, 
+        "service": {
+            "patterns": [
+                {
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.source.proto"
+                        }, 
+                        "3": {
+                            "name": "entity.name.function"
+                        }, 
+                        "7": {
+                            "name": "keyword.source.proto"
+                        }
+                    }, 
+                    "begin": "(rpc)(\\s+)([A-Za-z][A-Z-a-z0-9_]+)(\\s*)(\\([A-Za-z0-9_]+\\))(\\s+)(returns)(\\s+)(\\([A-Za-z0-9_]+\\))", 
+                    "end": ";"
+                }
+            ], 
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }, 
+                "3": {
+                    "name": "entity.name.class.message.proto"
+                }
+            }, 
+            "begin": "(service)(\\s+)([A-Za-z][A-Za-z0-9_.]*)(\\s*)(\\{)?", 
+            "end": "\\}"
+        }, 
+        "strings": {
+            "begin": "\"", 
+            "name": "string.quoted.double.proto", 
+            "end": "\""
+        }, 
+        "comments": {
+            "patterns": [
+                {
+                    "begin": "/\\*", 
+                    "name": "comment.block.proto", 
+                    "end": "\\*/"
+                }, 
+                {
+                    "begin": "//", 
+                    "name": "comment.line.double-slash.proto", 
+                    "end": "$\\n?"
+                }
+            ]
+        }, 
+        "oneof": {
+            "patterns": [
+                {
+                    "include": "#option"
+                }, 
+                {
+                    "include": "#comments"
+                }, 
+                {
+                    "name": "keyword.source.proto", 
+                    "match": "\\b(to|extensions)\\b"
+                }, 
+                {
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.class.proto"
+                        }, 
+                        "7": {
+                            "name": "constant.numeric.proto"
+                        }
+                    }, 
+                    "match": "([A-Za-z][A-Za-z0-9_]*)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(=)(\\s*)([0-9]*)"
+                }
+            ], 
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }
+            }, 
+            "begin": "(oneof)(\\s+)([A-Za-z][A-Za-z0-9_]*)(\\s*)(\\{)?", 
+            "end": "\\}"
+        }, 
+        "storagetypes": {
+            "name": "storage.type.proto", 
+            "match": "\\b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\\b"
+        }, 
+        "packaging": {
+            "captures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }, 
+                "2": {
+                    "name": "entity.name.tag"
+                }
+            }, 
+            "match": "(package|import)(?=(\\s+)([\"]?[A-Za-z][A-Za-z0-9_./]*[\"]?)(;))"
+        }, 
+        "message": {
+            "patterns": [
+                {
+                    "include": "$self"
+                }, 
+                {
+                    "include": "#enum"
+                }, 
+                {
+                    "include": "#option"
+                }, 
+                {
+                    "include": "#comments"
+                }, 
+                {
+                    "include": "#oneof"
+                }, 
+                {
+                    "patterns": [
+                        {
+                            "include": "#storagetypes"
+                        }, 
+                        {
+                            "captures": {
+                                "1": {
+                                    "name": "entity.name.class.proto"
+                                }
+                            }, 
+                            "match": "([A-Za-z][A-Za-z0-9_]*)(\\s+)([A-Za-z][A-Za-z0-9_]*)"
+                        }, 
+                        {
+                            "captures": {
+                                "4": {
+                                    "name": "constant.numeric.proto"
+                                }
+                            }, 
+                            "match": "(\\s*)(=)(\\s*)([0-9]*)"
+                        }, 
+                        {
+                            "patterns": [
+                                {
+                                    "name": "keyword.source.proto", 
+                                    "match": "default|packed|deprecated|lazy"
+                                }, 
+                                {
+                                    "include": "#constants"
+                                }
+                            ], 
+                            "begin": "\\[", 
+                            "end": "\\]"
+                        }
+                    ], 
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.source.proto"
+                        }
+                    }, 
+                    "begin": "(optional|repeated|required|to|extensions)(\\s+)", 
+                    "end": ";"
+                }
+            ], 
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.source.proto"
+                }, 
+                "3": {
+                    "name": "entity.name.class.message.proto"
+                }
+            }, 
+            "begin": "(message|extend)(\\s+)([A-Za-z][A-Za-z0-9_.]*)(\\s*)(\\{)?", 
+            "end": "\\}"
+        }
+    }, 
+    "uuid": "750ac1f3-b172-48de-b1a4-a3c310c4a293", 
+    "name": "Protocol Buffer", 
+    "fileTypes": [
+        "proto"
+    ]
+}
