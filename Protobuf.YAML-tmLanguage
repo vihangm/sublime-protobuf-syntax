@@ -122,15 +122,6 @@ repository:
       '1': {name: keyword.source.proto}
       '2': {name: entity.name.tag}
 
-  storagetypes:
-    name: storage.type.proto
-    match: \b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\b
-
-  strings:
-    name: string.quoted.double.proto
-    begin: '"'
-    end: '"'
-
   service:
     begin: (service)(\s+)([A-Za-z][A-Za-z0-9_.]*)(\s*)(\{)?
     beginCaptures:
@@ -145,4 +136,11 @@ repository:
         '7': {name: keyword.source.proto}
       end: ;
 
+  storagetypes:
+    name: storage.type.proto
+    match: \b(double|float|int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|bool|string|bytes)\b
 
+  strings:
+    name: string.quoted.double.proto
+    begin: '"'
+    end: '"'
