@@ -348,7 +348,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(package|import)(?=(\s+)(["]?[A-Za-z][A-Za-z0-9_./]*["]?)(;))</string>
+			<string>(package|import)(?=(\s+)(["]?[A-Za-z][A-Za-z0-9-_./]*["]?)(;))</string>
 		</dict>
 		<key>service</key>
 		<dict>
