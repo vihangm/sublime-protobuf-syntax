@@ -102,7 +102,7 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.class.proto</string>
+					<string>entity.name.class.enum.proto</string>
 				</dict>
 			</dict>
 			<key>end</key>
