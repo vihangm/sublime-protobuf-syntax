@@ -11,3 +11,5 @@ Contributors
 * [herolover](https://github.com/herolover)
 * [lvzixun](https://github.com/lvzixun)
 * [Jazzer360](https://github.com/Jazzer360)
+* [lohmander](https://github.com/lohmander)
+* [yangsu](https://github.com/yangsu)
