@@ -102,7 +102,7 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.class.enum.proto</string>
+					<string>entity.name.class.proto</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -372,8 +372,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+				<dict>
 					<key>begin</key>
-					<string>(rpc)(\s+)([A-Za-z][A-Z-a-z0-9_]+)(\s*)(\([A-Za-z0-9_]+\))(\s+)(returns)(\s+)(\([A-Za-z0-9_]+\))</string>
+					<string>(rpc)\s+([A-Za-z][A-Z-a-z0-9_]+)\s*\((stream\s+)?([A-Za-z0-9_]+)\)\s+(returns)\s+\((stream\s+)?([A-Za-z0-9_]+)\)\{?</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -381,19 +385,29 @@
 							<key>name</key>
 							<string>keyword.source.proto</string>
 						</dict>
-						<key>3</key>
+						<key>2</key>
 						<dict>
 							<key>name</key>
 							<string>entity.name.function</string>
 						</dict>
-						<key>7</key>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.source.proto</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.source.proto</string>
+						</dict>
+						<key>6</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.source.proto</string>
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>;</string>
+					<string>\}|;</string>
 				</dict>
 			</array>
 		</dict>
