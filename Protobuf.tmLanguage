@@ -208,6 +208,23 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
+									<string>keyword.source.proto</string>
+								</dict>
+								<key>4</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.class.proto</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>(map)&lt;([A-Za-z][A-Za-z0-9_]*),\s*([A-Za-z][A-Za-z0-9_]*)&gt;\s+([A-Za-z][A-Za-z0-9_]*)</string>
+						</dict>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
 									<string>entity.name.class.proto</string>
 								</dict>
 							</dict>
