@@ -76,6 +76,10 @@ repository:
       end: ;
       patterns:
       - include: '#storagetypes'
+      - match: (map)<([A-Za-z][A-Za-z0-9_]*),\s*([A-Za-z][A-Za-z0-9_]*)>\s+([A-Za-z][A-Za-z0-9_]*)
+        captures:
+          '1': {name: keyword.source.proto}
+          '4': {name: entity.name.class.proto}
       - match: ([A-Za-z][A-Za-z0-9_]*)(\s+)([A-Za-z][A-Za-z0-9_]*)
         captures:
           '1': {name: entity.name.class.proto}
@@ -129,12 +133,15 @@ repository:
       '3': {name: entity.name.class.message.proto}
     end: \}
     patterns:
-    - begin: (rpc)(\s+)([A-Za-z][A-Z-a-z0-9_]+)(\s*)(\([A-Za-z0-9_]+\))(\s+)(returns)(\s+)(\([A-Za-z0-9_]+\))
+    - include: '#comments'
+    - begin: (rpc)\s+([A-Za-z][A-Z-a-z0-9_]+)\s*\((stream\s+)?([A-Za-z0-9_]+)\)\s+(returns)\s+\((stream\s+)?([A-Za-z0-9_]+)\)\{?
       beginCaptures:
         '1': {name: keyword.source.proto}
-        '3': {name: entity.name.function}
-        '7': {name: keyword.source.proto}
-      end: ;
+        '2': {name: entity.name.function}
+        '3': {name: keyword.source.proto}
+        '5': {name: keyword.source.proto}
+        '6': {name: keyword.source.proto}
+      end: \}|;
 
   storagetypes:
     name: storage.type.proto
