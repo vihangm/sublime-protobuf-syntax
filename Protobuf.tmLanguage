@@ -333,6 +333,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#comments</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#strings</string>
 				</dict>
 				<dict>
@@ -425,6 +429,17 @@
 					</dict>
 					<key>end</key>
 					<string>\}|;</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#option</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
