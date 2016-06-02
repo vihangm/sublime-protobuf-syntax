@@ -5,6 +5,7 @@
         "--cpp_out=$file_path",
         "--java_out=$file_path",
         "--python_out=$file_path",
+        "--go_out=$file_path",
         "$file"
     ],
     "selector": "source.proto",
@@ -33,6 +34,15 @@
                 "protoc",
                 "-I=$file_path",
                 "--python_out=$file_path",
+                "$file"
+            ]
+        },
+        {
+            "name": "Go",
+            "cmd": [
+                "protoc",
+                "-I=$file_path",
+                "--go_out=$file_path",
                 "$file"
             ]
         }
