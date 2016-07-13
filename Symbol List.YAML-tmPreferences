@@ -1,7 +1,7 @@
 # [PackageDev] target_format: plist, ext: tmPreferences
 
 name: Symbol List
-scope: "entity.name.class.message.proto, entity.name.class.enum.proto"
+scope: "entity.name.class.message.proto, entity.name.class.enum.proto, constant.other.proto"
 uuid: c2234a3a-2e4e-4c92-af3e-5640847d91c6
 
 

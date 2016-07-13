@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List</string>
 	<key>scope</key>
-	<string>entity.name.class.message.proto, entity.name.class.enum.proto</string>
+	<string>entity.name.class.message.proto, entity.name.class.enum.proto, constant.other.proto</string>
 	<key>settings</key>
 	<dict>
 		<key>showInIndexedSymbolList</key>
