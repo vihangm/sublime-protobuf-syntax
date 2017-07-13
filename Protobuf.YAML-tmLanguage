@@ -46,7 +46,7 @@ repository:
     begin: (enum)(\s+)([A-Za-z][A-Za-z0-9_]*)(\s*)(\{)?
     beginCaptures:
       '1': {name: keyword.source.proto}
-      '3': {name: entity.name.class.proto}
+      '3': {name: entity.name.class.message.proto}
     end: \}
     patterns:
     - include: '#option'
